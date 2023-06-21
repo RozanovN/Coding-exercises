@@ -24,14 +24,14 @@ class Solution {
 public:
     std::vector<std::vector<int>> generate(int numRows) {
         std::vector<std::vector<int>> triangle{static_cast<size_t>(numRows)};
-        int raw = 1;
+        int row = 1;
 
         std::vector<int> *prev = nullptr;
         for (auto& cells : triangle)
         {
-            for (int i = 0; i < raw; i++)
+            for (int i = 0; i < row; i++)
             {
-                if (!(i==0 || i == raw - 1))
+                if (!(i==0 || i == row - 1))
                 {
                     cells.push_back(
                         (*prev)[get_index(i - 1, prev->size())]
@@ -41,7 +41,7 @@ public:
                 }
             }
             prev = &cells;
-            ++raw;
+            ++row;
         }
         return triangle;
     }
